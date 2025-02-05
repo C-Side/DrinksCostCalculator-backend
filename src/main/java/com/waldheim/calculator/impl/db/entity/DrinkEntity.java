@@ -16,6 +16,9 @@ public class DrinkEntity {
 
     private double price;
 
+    public DrinkEntity() {
+    }
+
     public DrinkEntity(String name, double price) {
         this.name = name;
         this.price = price;

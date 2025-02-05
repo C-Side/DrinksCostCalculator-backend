@@ -16,6 +16,9 @@ public class PersonEntity {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DrinkEntity> drinks;
 
+    public PersonEntity() {
+    }
+
     public PersonEntity(String name, List<DrinkEntity> drinks) {
         this.name = name;
         this.drinks = drinks;

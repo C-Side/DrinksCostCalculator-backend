@@ -13,7 +13,8 @@ class DrinkCostCalculatorController {
     
     private final DrinkCostCalculatorFacade drinkCostCalculatorFacade;
 
-    public DrinkCostCalculatorController(@Autowired DrinkCostCalculatorFacade drinkCostCalculatorFacade) {
+    @Autowired
+    public DrinkCostCalculatorController(DrinkCostCalculatorFacade drinkCostCalculatorFacade) {
         this.drinkCostCalculatorFacade = drinkCostCalculatorFacade;
     }
 

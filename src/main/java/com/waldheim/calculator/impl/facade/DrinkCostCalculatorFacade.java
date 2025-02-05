@@ -15,12 +15,15 @@ import java.util.NoSuchElementException;
 @Service
 public class DrinkCostCalculatorFacade {
 
-    @Autowired
-    private PersonRepository personRepository;
-    @Autowired
-    private DrinkRepository drinkRepository;
-    @Autowired
-    private CalculatorMapper calculatorMapper;
+    private final PersonRepository personRepository;
+    private final DrinkRepository drinkRepository;
+    private final CalculatorMapper calculatorMapper;
+
+    public DrinkCostCalculatorFacade(@Autowired PersonRepository personRepository, @Autowired DrinkRepository drinkRepository, @Autowired CalculatorMapper calculatorMapper) {
+        this.personRepository = personRepository;
+        this.drinkRepository = drinkRepository;
+        this.calculatorMapper = calculatorMapper;
+    }
 
     public Long createPerson(PersonDTO personDTO) {
         PersonEntity newPerson = personRepository.save(calculatorMapper.toPersonEntity(personDTO));
