@@ -1,11 +1,14 @@
 package com.waldheim.calculator.rest;
 
 
+import com.waldheim.calculator.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.impl.DTO.DrinkDTO;
 import com.waldheim.calculator.impl.DTO.PersonDTO;
 import com.waldheim.calculator.impl.facade.DrinkCostCalculatorFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
@@ -19,14 +22,24 @@ class DrinkCostCalculatorController {
         this.drinkCostCalculatorFacade = drinkCostCalculatorFacade;
     }
 
+    @GetMapping("/persons")
+    public List<PersonDTO> getAllPersons() {
+        return drinkCostCalculatorFacade.getAllPersons();
+    }
+
     @PostMapping("/persons")
     public Long createPerson(@RequestBody PersonDTO person) {
         return drinkCostCalculatorFacade.createPerson(person);
     }
 
+    @GetMapping("/persons")
+    public List<DrinkDTO> getAllDrinks() {
+        return drinkCostCalculatorFacade.getAllDrinks();
+    }
+
     @PostMapping("/persons/{id}/drinks")
-    public void addDrinkToPerson(@PathVariable Long id, @RequestBody DrinkDTO drink) {
-        drinkCostCalculatorFacade.addConsumedDrinkByPerson(id, drink);
+    public void addDrinkToPerson(@PathVariable Long id, @RequestBody DrinkAddedDTO drinkAddedDTO) {
+        drinkCostCalculatorFacade.addConsumedDrinkByPerson(id, drinkAddedDTO);
     }
 
     @GetMapping("/persons/{id}/total")

@@ -1,5 +1,6 @@
 package com.waldheim.calculator.impl.db.impl;
 
+import com.waldheim.calculator.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.impl.DTO.DrinkDTO;
 import com.waldheim.calculator.impl.DTO.PersonDTO;
 import com.waldheim.calculator.impl.db.DatabaseService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class DatabaseFacade implements DatabaseService {
@@ -33,15 +35,25 @@ public class DatabaseFacade implements DatabaseService {
     }
 
     @Override
+    public List<PersonDTO> getAllPersons() {
+        return personRepository.findAll().stream().map(calculatorMapper::personEntityToPersonDto).collect(Collectors.toList());
+    }
+
+    @Override
     public Long createPerson(PersonDTO personDTO) {
         PersonEntity newPerson = personRepository.save(calculatorMapper.personDtoToPersonEntity(personDTO));
         return newPerson.getId();
     }
 
     @Override
-    public void addConsumedDrinkByPerson(Long personId, DrinkDTO drinkDTO) {
+    public List<DrinkDTO> getAllDrinks() {
+        return drinkRepository.findAll().stream().map(calculatorMapper::drinkEntityDtoToDrinkDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public void addConsumedDrinkByPerson(Long personId, DrinkAddedDTO drinkAddedDTO) {
         PersonEntity personEntity = personRepository.findById(personId).orElseThrow(NoSuchElementException::new);
-        DrinkEntity drinkEntity = calculatorMapper.drinkDtoToDrinkEntity(drinkDTO);
+        DrinkEntity drinkEntity = calculatorMapper.drinkDtoToDrinkEntity(drinkAddedDTO.drinkDTO());
         PersonDrinkEntity personDrinkEntity = personDrinkRepository.findByPersonAndDrink(personEntity, drinkEntity);
         if (personDrinkEntity == null) {
             personDrinkEntity = new PersonDrinkEntity();
@@ -49,7 +61,7 @@ public class DatabaseFacade implements DatabaseService {
             personDrinkEntity.setDrink(drinkEntity);
             personDrinkEntity.setQuantity(0);
         }
-        personDrinkEntity.setQuantity(personDrinkEntity.getQuantity() + 1);
+        personDrinkEntity.setQuantity(personDrinkEntity.getQuantity() + drinkAddedDTO.quantity());
         personDrinkRepository.save(personDrinkEntity);
     }
 

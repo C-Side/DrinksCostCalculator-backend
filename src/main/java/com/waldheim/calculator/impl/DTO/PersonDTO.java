@@ -5,5 +5,5 @@ import com.waldheim.calculator.impl.db.entity.PersonDrinkEntity;
 import java.util.List;
 import java.util.Set;
 
-public record PersonDTO(Long id, String name, Set<PersonDrinkEntity> personDrinks) {
+public record PersonDTO(Long id, String name) {
 }
