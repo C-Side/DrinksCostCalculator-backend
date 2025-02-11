@@ -19,25 +19,26 @@ public class DrinkCostCalculatorFacade {
     private final DrinkRepository drinkRepository;
     private final CalculatorMapper calculatorMapper;
 
-    public DrinkCostCalculatorFacade(@Autowired PersonRepository personRepository, @Autowired DrinkRepository drinkRepository, @Autowired CalculatorMapper calculatorMapper) {
+    @Autowired
+    public DrinkCostCalculatorFacade(PersonRepository personRepository, DrinkRepository drinkRepository, CalculatorMapper calculatorMapper) {
         this.personRepository = personRepository;
         this.drinkRepository = drinkRepository;
         this.calculatorMapper = calculatorMapper;
     }
 
     public Long createPerson(PersonDTO personDTO) {
-        PersonEntity newPerson = personRepository.save(calculatorMapper.toPersonEntity(personDTO));
+        PersonEntity newPerson = personRepository.save(calculatorMapper.personDtoToPersonEntity(personDTO));
         return newPerson.getId();
     }
 
     public void addDrinkToPerson(Long personId, DrinkDTO drinkDTO) {
         PersonEntity personEntity = personRepository.findById(personId).orElseThrow(() -> new NoSuchElementException("Person not found"));
-        personEntity.getDrinks().add(drinkRepository.getReferenceById(drinkDTO.id()));
+        personEntity.getPersonDrinks().add(drinkRepository.getReferenceById(drinkDTO.id()));
         personRepository.save(personEntity);
     }
 
     public double calculateTotalCost(Long personId) {
         PersonEntity personEntity = personRepository.findById(personId).orElseThrow(() -> new NoSuchElementException("Person not found"));
-        return personEntity.getDrinks().stream().mapToDouble(DrinkEntity::getPrice).sum();
+        return personEntity.getPersonDrinks().stream().mapToDouble(DrinkEntity::getPrice).sum();
     }
 }

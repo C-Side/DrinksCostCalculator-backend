@@ -1,4 +1,8 @@
 package com.waldheim.calculator.impl.DTO;
 
-public record DrinkDTO(Long id, String name, double price) {
+import com.waldheim.calculator.impl.db.entity.PersonDrinkEntity;
+
+import java.util.Set;
+
+public record DrinkDTO(Long id, String name, double price, Set<PersonDrinkEntity> personDrinks) {
 }

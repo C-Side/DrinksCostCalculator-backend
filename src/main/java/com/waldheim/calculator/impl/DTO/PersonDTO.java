@@ -1,6 +1,9 @@
 package com.waldheim.calculator.impl.DTO;
 
-import java.util.List;
+import com.waldheim.calculator.impl.db.entity.PersonDrinkEntity;
 
-public record PersonDTO(Long id, String name, List<DrinkDTO> drinks) {
+import java.util.List;
+import java.util.Set;
+
+public record PersonDTO(Long id, String name, Set<PersonDrinkEntity> personDrinks) {
 }

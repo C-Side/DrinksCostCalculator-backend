@@ -2,26 +2,21 @@ package com.waldheim.calculator.impl.db.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "persons")
 public class PersonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DrinkEntity> drinks;
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private Set<PersonDrinkEntity> personDrinks = new HashSet<>();
 
     public PersonEntity() {
-    }
-
-    public PersonEntity(String name, List<DrinkEntity> drinks) {
-        this.name = name;
-        this.drinks = drinks;
     }
 
     // Getters and setters
@@ -41,11 +36,11 @@ public class PersonEntity {
         this.name = name;
     }
 
-    public List<DrinkEntity> getDrinks() {
-        return drinks;
+    public Set<PersonDrinkEntity> getPersonDrinks() {
+        return personDrinks;
     }
 
-    public void setDrinks(List<DrinkEntity> drinkEntities) {
-        this.drinks = drinkEntities;
+    public void setPersonDrinks(Set<PersonDrinkEntity> personDrinks) {
+        this.personDrinks = personDrinks;
     }
 }
