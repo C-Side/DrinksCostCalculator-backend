@@ -28,6 +28,12 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
 }
 
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs = [
+            '-Amapstruct.suppressGeneratorTimestamp=true'
+    ]
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }

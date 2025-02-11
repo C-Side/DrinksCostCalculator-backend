@@ -2,10 +2,9 @@ package com.waldheim.calculator.impl.facade;
 
 import com.waldheim.calculator.impl.DTO.DrinkDTO;
 import com.waldheim.calculator.impl.DTO.PersonDTO;
+import com.waldheim.calculator.impl.db.DatabaseService;
 import com.waldheim.calculator.impl.db.entity.DrinkEntity;
 import com.waldheim.calculator.impl.db.entity.PersonEntity;
-import com.waldheim.calculator.impl.db.repository.DrinkRepository;
-import com.waldheim.calculator.impl.db.repository.PersonRepository;
 import com.waldheim.calculator.impl.mapper.CalculatorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,30 +14,24 @@ import java.util.NoSuchElementException;
 @Service
 public class DrinkCostCalculatorFacade {
 
-    private final PersonRepository personRepository;
-    private final DrinkRepository drinkRepository;
+    private final DatabaseService databaseService;
     private final CalculatorMapper calculatorMapper;
 
     @Autowired
-    public DrinkCostCalculatorFacade(PersonRepository personRepository, DrinkRepository drinkRepository, CalculatorMapper calculatorMapper) {
-        this.personRepository = personRepository;
-        this.drinkRepository = drinkRepository;
+    public DrinkCostCalculatorFacade(DatabaseService databaseService, CalculatorMapper calculatorMapper) {
+        this.databaseService = databaseService;
         this.calculatorMapper = calculatorMapper;
     }
 
     public Long createPerson(PersonDTO personDTO) {
-        PersonEntity newPerson = personRepository.save(calculatorMapper.personDtoToPersonEntity(personDTO));
-        return newPerson.getId();
+        return databaseService.createPerson(personDTO);
     }
 
-    public void addDrinkToPerson(Long personId, DrinkDTO drinkDTO) {
-        PersonEntity personEntity = personRepository.findById(personId).orElseThrow(() -> new NoSuchElementException("Person not found"));
-        personEntity.getPersonDrinks().add(drinkRepository.getReferenceById(drinkDTO.id()));
-        personRepository.save(personEntity);
+    public void addConsumedDrinkByPerson(Long personId, DrinkDTO drinkDTO) {
+        databaseService.addConsumedDrinkByPerson(personId, drinkDTO);
     }
 
-    public double calculateTotalCost(Long personId) {
-        PersonEntity personEntity = personRepository.findById(personId).orElseThrow(() -> new NoSuchElementException("Person not found"));
-        return personEntity.getPersonDrinks().stream().mapToDouble(DrinkEntity::getPrice).sum();
+    public double calculateTotalCostByPerson(Long personId) {
+        return databaseService.getTotalCost(personId);
     }
 }

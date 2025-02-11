@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api")
 class DrinkCostCalculatorController {
     
@@ -25,11 +26,11 @@ class DrinkCostCalculatorController {
 
     @PostMapping("/persons/{id}/drinks")
     public void addDrinkToPerson(@PathVariable Long id, @RequestBody DrinkDTO drink) {
-        drinkCostCalculatorFacade.addDrinkToPerson(id, drink);
+        drinkCostCalculatorFacade.addConsumedDrinkByPerson(id, drink);
     }
 
     @GetMapping("/persons/{id}/total")
     public double getTotalCost(@PathVariable Long id) {
-        return drinkCostCalculatorFacade.calculateTotalCost(id);
+        return drinkCostCalculatorFacade.calculateTotalCostByPerson(id);
     }
 }
