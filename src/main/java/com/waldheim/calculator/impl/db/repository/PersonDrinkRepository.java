@@ -7,14 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-import java.util.Objects;
+import java.math.BigDecimal;
 
 public interface PersonDrinkRepository extends JpaRepository<PersonDrinkEntity, Long> {
     PersonDrinkEntity findByPersonAndDrink(PersonEntity person, DrinkEntity drink);
-    @Query(value = "SELECT SUM(d.price * p_d.quantity) AS total_cost" +
-            "FROM PersonDrinkEntity p_d" +
-            "JOIN drinks d ON p_d.drink_id = d.id" +
-            "WHERE p_d.person_id = :personId", nativeQuery = true)
-    List<Object> findTotalCostByPerson(@Param("personId") long personId);
+
+    @Query(value = "SELECT SUM(drinks.price * person_drinks.quantity) AS total_cost" +
+            " FROM person_drinks" +
+            " JOIN drinks ON person_drinks.drink_id = drinks.id" +
+            " WHERE person_drinks.person_id = :personId", nativeQuery = true)
+    BigDecimal findTotalCostByPerson(@Param("personId") long personId);
 }

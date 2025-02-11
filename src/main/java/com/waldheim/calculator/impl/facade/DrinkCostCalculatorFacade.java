@@ -4,25 +4,20 @@ import com.waldheim.calculator.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.impl.DTO.DrinkDTO;
 import com.waldheim.calculator.impl.DTO.PersonDTO;
 import com.waldheim.calculator.impl.db.DatabaseService;
-import com.waldheim.calculator.impl.db.entity.DrinkEntity;
-import com.waldheim.calculator.impl.db.entity.PersonEntity;
-import com.waldheim.calculator.impl.mapper.CalculatorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class DrinkCostCalculatorFacade {
 
     private final DatabaseService databaseService;
-    private final CalculatorMapper calculatorMapper;
 
     @Autowired
-    public DrinkCostCalculatorFacade(DatabaseService databaseService, CalculatorMapper calculatorMapper) {
+    public DrinkCostCalculatorFacade(DatabaseService databaseService) {
         this.databaseService = databaseService;
-        this.calculatorMapper = calculatorMapper;
     }
 
     public List<PersonDTO> getAllPersons() {
@@ -37,11 +32,15 @@ public class DrinkCostCalculatorFacade {
         return databaseService.getAllDrinks();
     }
 
+    public Long createDrink(DrinkDTO drinkDTO) {
+        return databaseService.createDrink(drinkDTO);
+    }
+
     public void addConsumedDrinkByPerson(Long personId, DrinkAddedDTO drinkAddedDTO) {
         databaseService.addConsumedDrinkByPerson(personId, drinkAddedDTO);
     }
 
-    public double calculateTotalCostByPerson(Long personId) {
+    public BigDecimal calculateTotalCostByPerson(Long personId) {
         return databaseService.getTotalCost(personId);
     }
 }

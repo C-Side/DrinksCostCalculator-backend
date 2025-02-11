@@ -14,6 +14,7 @@ import com.waldheim.calculator.impl.mapper.CalculatorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -51,13 +52,19 @@ public class DatabaseFacade implements DatabaseService {
     }
 
     @Override
+    public Long createDrink(DrinkDTO drinkDTO) {
+        DrinkEntity drinkEntity = drinkRepository.save(calculatorMapper.drinkDtoToDrinkEntity(drinkDTO));
+        return drinkEntity.getId();
+    }
+
+    @Override
     public void addConsumedDrinkByPerson(Long personId, DrinkAddedDTO drinkAddedDTO) {
         PersonEntity personEntity = personRepository.findById(personId).orElseThrow(NoSuchElementException::new);
         DrinkEntity drinkEntity = calculatorMapper.drinkDtoToDrinkEntity(drinkAddedDTO.drinkDTO());
         PersonDrinkEntity personDrinkEntity = personDrinkRepository.findByPersonAndDrink(personEntity, drinkEntity);
         if (personDrinkEntity == null) {
             personDrinkEntity = new PersonDrinkEntity();
-            personDrinkEntity.setId(personId);
+            personDrinkEntity.setPerson(personEntity);
             personDrinkEntity.setDrink(drinkEntity);
             personDrinkEntity.setQuantity(0);
         }
@@ -66,9 +73,8 @@ public class DatabaseFacade implements DatabaseService {
     }
 
     @Override
-    public double getTotalCost(Long personId) {
+    public BigDecimal getTotalCost(Long personId) {
         PersonEntity personEntity = personRepository.findById(personId).orElseThrow(NoSuchElementException::new);
-        List<Object> totalCostByPerson = personDrinkRepository.findTotalCostByPerson(personEntity.getId());
-        return 0;
+        return personDrinkRepository.findTotalCostByPerson(personEntity.getId());
     }
 }

@@ -8,6 +8,7 @@ import com.waldheim.calculator.impl.facade.DrinkCostCalculatorFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -28,22 +29,27 @@ class DrinkCostCalculatorController {
     }
 
     @PostMapping("/persons")
-    public Long createPerson(@RequestBody PersonDTO person) {
-        return drinkCostCalculatorFacade.createPerson(person);
+    public Long createPerson(@RequestBody PersonDTO personDTO) {
+        return drinkCostCalculatorFacade.createPerson(personDTO);
     }
 
-    @GetMapping("/persons")
+    @GetMapping("/drinks")
     public List<DrinkDTO> getAllDrinks() {
         return drinkCostCalculatorFacade.getAllDrinks();
     }
 
+    @PostMapping("/drinks")
+    public Long createDrink(@RequestBody DrinkDTO drinkDTO) {
+        return drinkCostCalculatorFacade.createDrink(drinkDTO);
+    }
+
     @PostMapping("/persons/{id}/drinks")
-    public void addDrinkToPerson(@PathVariable Long id, @RequestBody DrinkAddedDTO drinkAddedDTO) {
+    public void addDrinkToPerson(@PathVariable("id") Long id, @RequestBody DrinkAddedDTO drinkAddedDTO) {
         drinkCostCalculatorFacade.addConsumedDrinkByPerson(id, drinkAddedDTO);
     }
 
     @GetMapping("/persons/{id}/total")
-    public double getTotalCost(@PathVariable Long id) {
+    public BigDecimal getTotalCost(@PathVariable("id") Long id) {
         return drinkCostCalculatorFacade.calculateTotalCostByPerson(id);
     }
 }
