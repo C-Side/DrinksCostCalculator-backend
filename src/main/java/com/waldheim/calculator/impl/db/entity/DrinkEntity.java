@@ -14,8 +14,6 @@ public class DrinkEntity {
     private Long id;
     private String name;
     private double price;
-    @OneToMany(mappedBy = "drink", cascade = CascadeType.ALL)
-    private Set<PersonDrinkEntity> personDrinks = new HashSet<>();
 
     public DrinkEntity() {
     }

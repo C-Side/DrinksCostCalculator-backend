@@ -13,8 +13,6 @@ public class PersonEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    private Set<PersonDrinkEntity> personDrinks = new HashSet<>();
 
     public PersonEntity() {
     }
@@ -34,13 +32,5 @@ public class PersonEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<PersonDrinkEntity> getPersonDrinks() {
-        return personDrinks;
-    }
-
-    public void setPersonDrinks(Set<PersonDrinkEntity> personDrinks) {
-        this.personDrinks = personDrinks;
     }
 }

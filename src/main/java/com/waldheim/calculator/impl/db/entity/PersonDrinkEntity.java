@@ -8,8 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
-import java.time.LocalDateTime;
-import jakarta.persistence.Id;
 
 @Entity
 @Table(name = "person_drinks")
