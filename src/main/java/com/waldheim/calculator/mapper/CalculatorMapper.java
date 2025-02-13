@@ -10,7 +10,10 @@ import org.mapstruct.Mapper;
 public interface CalculatorMapper {
 
     PersonDTO personEntityToPersonDto(PersonEntity personEntity);
+
     PersonEntity personDtoToPersonEntity(PersonDTO personDto);
+
     DrinkDTO drinkEntityDtoToDrinkDto(DrinkEntity drinkEntity);
+
     DrinkEntity drinkDtoToDrinkEntity(DrinkDTO drinkDTO);
 }
