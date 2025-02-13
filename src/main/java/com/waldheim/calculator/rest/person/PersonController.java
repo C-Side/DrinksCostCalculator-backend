@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/persons")
 public class PersonController {
 

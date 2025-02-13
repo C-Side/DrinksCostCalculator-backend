@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read #This is required for actions/checkout
+    env:
+      PROD_FRONTEND_URL: ${{ secrets.PROD_FRONTEND_URL }}
 
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +24,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'microsoft'
+          distribution: 'adopt-openj9'
 
       - name: Build with Gradle
         run: ./gradlew bootJar

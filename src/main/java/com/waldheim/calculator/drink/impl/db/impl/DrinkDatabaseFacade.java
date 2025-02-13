@@ -4,7 +4,7 @@ import com.waldheim.calculator.drink.impl.DTO.DrinkDTO;
 import com.waldheim.calculator.drink.impl.db.DrinkDatabaseService;
 import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
 import com.waldheim.calculator.drink.impl.db.repository.DrinkRepository;
-import com.waldheim.calculator.mapper.CalculatorMapper;
+import com.waldheim.calculator.common.mapper.CalculatorMapper;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

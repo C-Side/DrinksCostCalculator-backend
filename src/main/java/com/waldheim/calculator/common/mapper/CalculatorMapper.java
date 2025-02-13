@@ -1,4 +1,4 @@
-package com.waldheim.calculator.mapper;
+package com.waldheim.calculator.common.mapper;
 
 import com.waldheim.calculator.drink.impl.DTO.DrinkDTO;
 import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;

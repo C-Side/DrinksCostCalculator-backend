@@ -38,6 +38,7 @@ public class PersonFacade implements PersonService {
 
     @Override
     public BigDecimal calculateTotalCostByPerson(Long personId) {
-        return personDatabaseService.getTotalCost(personId).setScale(2, RoundingMode.CEILING);
+        BigDecimal totalCost = personDatabaseService.getTotalCost(personId);
+        return totalCost == null ? BigDecimal.ZERO : totalCost.setScale(2, RoundingMode.CEILING);
     }
 }
