@@ -27,7 +27,7 @@ jobs:
           distribution: 'microsoft'
 
       - name: Build with Gradle
-        run: ./gradlew bootJar -Pprod
+        run: ./gradlew bootJar
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
