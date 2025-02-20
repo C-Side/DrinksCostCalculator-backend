@@ -16,6 +16,8 @@ jobs:
       contents: read #This is required for actions/checkout
     env:
       PROD_FRONTEND_URL: ${{ secrets.PROD_FRONTEND_URL }}
+      PROD_DB_ADMIN: ${{ secrets.PROD_DB_ADMIN }}
+      PROD_DB_PASSWORD: ${{ secrets.PROD_DB_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
