@@ -37,13 +37,6 @@ jobs:
           name: java-app
           path: '${{ github.workspace }}/build/libs/*.jar'
 
-      - name: Deploy Debugging Script
-        run: |
-          echo '#!/bin/bash' > startup.sh
-          echo 'echo "PROD_DB_ADMIN: $PROD_DB_ADMIN"' >> startup.sh
-          echo 'echo "PROD_DB_PASSWORD is set? $([[ -n "$PROD_DB_PASSWORD" ]] && echo "Yes" || echo "No")"' >> startup.sh
-          chmod +x startup.sh
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -74,4 +67,11 @@ jobs:
           app-name: 'drinks-cost-calculator-backend'
           slot-name: 'Production'
           package: '*.jar'
+
+      - name: Create and Deploy Startup Script
+        run: |
+          echo '#!/bin/bash' > startup.sh
+          echo 'echo "PROD_DB_ADMIN: $PROD_DB_ADMIN"' >> startup.sh
+          echo 'echo "PROD_DB_PASSWORD is set? $([[ -n "$PROD_DB_PASSWORD" ]] && echo "Yes" || echo "No")"' >> startup.sh
+          chmod +x startup.sh
           
