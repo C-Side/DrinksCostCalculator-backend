@@ -14,10 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read #This is required for actions/checkout
-    env:
-      PROD_FRONTEND_URL: ${{ secrets.PROD_FRONTEND_URL }}
-      PROD_DB_ADMIN: ${{ secrets.PROD_DB_ADMIN }}
-      PROD_DB_PASSWORD: ${{ secrets.PROD_DB_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
@@ -60,19 +56,12 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5ABDF5D7F24644BA82F6B64EA77DE841 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C19855AF7E94483B96B139E49A6D713A }}
 
-      - name: Create and Deploy Startup Script
-        run: |
-          echo '#!/bin/bash' > startup.sh
-          echo 'echo "PROD_DB_ADMIN: $PROD_DB_ADMIN"' >> startup.sh
-          echo 'echo "PROD_DB_PASSWORD is set? $([[ -n "$PROD_DB_PASSWORD" ]] && echo "Yes" || echo "No")"' >> startup.sh
-          chmod +x startup.sh
-
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'drinks-cost-calculator-backend'
-          package: '.'
+          package: '*.jar'
 
 
           
