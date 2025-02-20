@@ -3,7 +3,9 @@ package com.waldheim.calculator.rest.person;
 import com.waldheim.calculator.person.api.PersonService;
 import com.waldheim.calculator.person.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.person.impl.DTO.PersonDTO;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -26,7 +28,7 @@ public class PersonController {
     }
 
     @PostMapping
-    public PersonDTO createPerson(@RequestBody PersonDTO personDTO) {
+    public PersonDTO createPerson(@RequestBody PersonDTO personDTO) throws BadRequestException {
         return personService.createPerson(personDTO);
     }
 
@@ -38,5 +40,16 @@ public class PersonController {
     @GetMapping("/{id}/total")
     public BigDecimal getTotalCost(@PathVariable("id") Long id) {
         return personService.calculateTotalCostByPerson(id);
+    }
+
+    @PutMapping
+    public PersonDTO updatePerson(@RequestBody PersonDTO personDTO) {
+        return personService.updatePerson(personDTO);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deletePerson(@RequestBody PersonDTO personDTO) {
+        personService.deletePerson(personDTO);
+        return ResponseEntity.noContent().build();
     }
 }
