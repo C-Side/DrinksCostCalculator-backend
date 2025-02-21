@@ -36,7 +36,7 @@ public class PersonDatabaseFacade implements PersonDatabaseService {
 
     @Override
     public List<PersonDTO> getAllPersons() {
-        return personRepository.findAll().stream().map(calculatorMapper::personEntityToPersonDto).collect(Collectors.toList());
+        return personRepository.findAll().stream().map(calculatorMapper::personEntityToPersonDTO).collect(Collectors.toList());
     }
 
     @Override
@@ -44,14 +44,14 @@ public class PersonDatabaseFacade implements PersonDatabaseService {
         if (personDTO.id() != null) {
             throw new BadRequestException("A new person cannot already have an ID");
         }
-        PersonEntity newPerson = personRepository.save(calculatorMapper.personDtoToPersonEntity(personDTO));
-        return calculatorMapper.personEntityToPersonDto(newPerson);
+        PersonEntity newPerson = personRepository.save(calculatorMapper.personDTOToPersonEntity(personDTO));
+        return calculatorMapper.personEntityToPersonDTO(newPerson);
     }
 
     @Override
     public void addConsumedDrinkByPerson(Long personId, DrinkAddedDTO drinkAddedDTO) {
         PersonEntity personEntity = personRepository.findById(personId).orElseThrow(NoSuchElementException::new);
-        DrinkEntity drinkEntity = calculatorMapper.drinkDtoToDrinkEntity(drinkAddedDTO.drinkDTO());
+        DrinkEntity drinkEntity = calculatorMapper.drinkDTOToDrinkEntity(drinkAddedDTO.drinkDTO());
         PersonDrinkEntity personDrinkEntity = personDrinkRepository.findByPersonAndDrink(personEntity, drinkEntity);
         if (personDrinkEntity == null) {
             personDrinkEntity = new PersonDrinkEntity();
@@ -71,12 +71,12 @@ public class PersonDatabaseFacade implements PersonDatabaseService {
 
     @Override
     public PersonDTO updatePerson(PersonDTO personDTO) {
-        PersonEntity personEntity = personRepository.save(calculatorMapper.personDtoToPersonEntity(personDTO));
-        return calculatorMapper.personEntityToPersonDto(personEntity);
+        PersonEntity personEntity = personRepository.save(calculatorMapper.personDTOToPersonEntity(personDTO));
+        return calculatorMapper.personEntityToPersonDTO(personEntity);
     }
 
     @Override
     public void deletePerson(PersonDTO personDTO) {
-        personRepository.delete(calculatorMapper.personDtoToPersonEntity(personDTO));
+        personRepository.delete(calculatorMapper.personDTOToPersonEntity(personDTO));
     }
 }

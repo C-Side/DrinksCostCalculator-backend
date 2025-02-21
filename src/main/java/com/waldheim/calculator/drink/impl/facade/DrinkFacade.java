@@ -35,8 +35,8 @@ public class DrinkFacade implements DrinkService {
     }
 
     @Override
-    public DrinkDTO updateDrink(DrinkDTO drinkDto) {
-        return drinkDatabaseService.updateDrink(drinkDto);
+    public DrinkDTO updateDrink(DrinkDTO drinkDTO) {
+        return drinkDatabaseService.updateDrink(drinkDTO);
     }
 
     @Override

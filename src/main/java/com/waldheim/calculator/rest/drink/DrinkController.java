@@ -4,6 +4,7 @@ import com.waldheim.calculator.drink.api.DrinkService;
 import com.waldheim.calculator.drink.impl.DTO.DrinkDTO;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,24 +21,24 @@ public class DrinkController {
         this.drinkService = drinkService;
     }
 
-    @GetMapping
-    public List<DrinkDTO> getAllDrinks() {
-        return drinkService.getAllDrinks();
+    @GetMapping("/{id}")
+    public ResponseEntity<DrinkDTO> getDrinkById(@PathVariable Long id) {
+        return ResponseEntity.ok(drinkService.getDrinkById(id));
     }
 
-    @GetMapping("/{id}")
-    public DrinkDTO getDrinkById(@PathVariable Long id) {
-        return drinkService.getDrinkById(id);
+    @GetMapping
+    public ResponseEntity<List<DrinkDTO>> getAllDrinks() {
+        return ResponseEntity.ok(drinkService.getAllDrinks());
     }
 
     @PostMapping
-    public DrinkDTO createDrink(@RequestBody DrinkDTO drinkDTO) throws BadRequestException {
-        return drinkService.createDrink(drinkDTO);
+    public ResponseEntity<DrinkDTO> createDrink(@RequestBody DrinkDTO drinkDTO) throws BadRequestException {
+        return ResponseEntity.status(HttpStatus.CREATED).body(drinkService.createDrink(drinkDTO));
     }
 
     @PutMapping
-    public DrinkDTO updateDrink(@RequestBody DrinkDTO drinkDTO) {
-        return drinkService.updateDrink(drinkDTO);
+    public ResponseEntity<DrinkDTO> updateDrink(@RequestBody DrinkDTO drinkDTO) {
+        return ResponseEntity.ok(drinkService.updateDrink(drinkDTO));
     }
 
     @DeleteMapping

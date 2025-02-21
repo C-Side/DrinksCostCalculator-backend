@@ -5,6 +5,7 @@ import com.waldheim.calculator.person.api.PersonService;
 import com.waldheim.calculator.person.impl.DTO.PersonDTO;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,18 +24,19 @@ public class PersonController {
     }
 
     @GetMapping
-    public List<PersonDTO> getAllPersons() {
-        return personService.getAllPersons();
+    public ResponseEntity<List<PersonDTO>> getAllPersons() {
+        List<PersonDTO> allPersons = personService.getAllPersons();
+        return ResponseEntity.ok(allPersons);
     }
 
     @PostMapping
-    public PersonDTO createPerson(@RequestBody PersonDTO personDTO) throws BadRequestException {
-        return personService.createPerson(personDTO);
+    public ResponseEntity<PersonDTO> createPerson(@RequestBody PersonDTO personDTO) throws BadRequestException {
+        return ResponseEntity.status(HttpStatus.CREATED).body(personService.createPerson(personDTO));
     }
 
     @PutMapping
-    public PersonDTO updatePerson(@RequestBody PersonDTO personDTO) {
-        return personService.updatePerson(personDTO);
+    public ResponseEntity<PersonDTO> updatePerson(@RequestBody PersonDTO personDTO) {
+        return ResponseEntity.ok(personService.updatePerson(personDTO));
     }
 
     @DeleteMapping
@@ -44,12 +46,13 @@ public class PersonController {
     }
 
     @PostMapping("/{id}/drinks")
-    public void addDrinkToPerson(@PathVariable("id") Long id, @RequestBody DrinkAddedDTO drinkAddedDTO) {
+    public ResponseEntity<Void> addDrinkToPerson(@PathVariable("id") Long id, @RequestBody DrinkAddedDTO drinkAddedDTO) {
         personService.addConsumedDrinkByPerson(id, drinkAddedDTO);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}/total")
-    public BigDecimal getTotalCost(@PathVariable("id") Long id) {
-        return personService.calculateTotalCostByPerson(id);
+    public ResponseEntity<BigDecimal> getTotalCost(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(personService.calculateTotalCostByPerson(id));
     }
 }

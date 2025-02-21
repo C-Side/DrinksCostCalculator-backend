@@ -1,7 +1,9 @@
 package com.waldheim.calculator.common.mapper;
 
 import com.waldheim.calculator.drink.impl.DTO.DrinkDTO;
+import com.waldheim.calculator.drink.impl.DTO.DrinkKindDTO;
 import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
+import com.waldheim.calculator.drink.impl.db.entity.DrinkKindEntity;
 import com.waldheim.calculator.person.impl.DTO.PersonDTO;
 import com.waldheim.calculator.person.impl.db.entity.PersonEntity;
 import org.mapstruct.Mapper;
@@ -9,11 +11,15 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface CalculatorMapper {
 
-    PersonDTO personEntityToPersonDto(PersonEntity personEntity);
+    PersonDTO personEntityToPersonDTO(PersonEntity personEntity);
 
-    PersonEntity personDtoToPersonEntity(PersonDTO personDto);
+    PersonEntity personDTOToPersonEntity(PersonDTO personDTO);
 
-    DrinkDTO drinkEntityDtoToDrinkDto(DrinkEntity drinkEntity);
+    DrinkDTO drinkEntityDTOToDrinkDTO(DrinkEntity drinkEntity);
 
-    DrinkEntity drinkDtoToDrinkEntity(DrinkDTO drinkDTO);
+    DrinkEntity drinkDTOToDrinkEntity(DrinkDTO drinkDTO);
+
+    DrinkKindEntity drinkKindDTOToDrinkKindEntity(DrinkKindDTO drinkKindDTO);
+
+    DrinkKindDTO drinkKindEntityDTOToDrinkKindDTO(DrinkKindEntity drinkKindEntity);
 }

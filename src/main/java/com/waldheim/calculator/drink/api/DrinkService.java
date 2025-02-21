@@ -12,7 +12,7 @@ public interface DrinkService {
 
     DrinkDTO getDrinkById(Long id);
 
-    DrinkDTO updateDrink(DrinkDTO drinkDto);
+    DrinkDTO updateDrink(DrinkDTO drinkDTO);
 
     void deleteDrink(DrinkDTO drinkDTO);
 }

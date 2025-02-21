@@ -1,23 +1,11 @@
-package com.waldheim.calculator.drink.impl.db;
+package com.waldheim.calculator.drink.api;
 
-import com.waldheim.calculator.drink.impl.DTO.DrinkDTO;
 import com.waldheim.calculator.drink.impl.DTO.DrinkKindDTO;
 import org.apache.coyote.BadRequestException;
 
 import java.util.List;
 
-public interface DrinkDatabaseService {
-
-    List<DrinkDTO> getAllDrinks();
-
-    DrinkDTO createDrink(DrinkDTO drinkDTO) throws BadRequestException;
-
-    DrinkDTO getDrinkById(Long id);
-
-    DrinkDTO updateDrink(DrinkDTO drinkDTO);
-
-    void deleteDrink(DrinkDTO drinkDTO);
-
+public interface DrinkKindService {
     List<DrinkKindDTO> getAllDrinkKinds();
 
     DrinkKindDTO createDrinkKind(DrinkKindDTO drinkKindDTO) throws BadRequestException;
@@ -26,3 +14,4 @@ public interface DrinkDatabaseService {
 
     void deleteDrinkKind(DrinkKindDTO drinkKindDTO);
 }
+

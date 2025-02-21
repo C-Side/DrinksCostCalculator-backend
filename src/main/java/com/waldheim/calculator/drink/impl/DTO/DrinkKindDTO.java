@@ -1,7 +1,12 @@
 package com.waldheim.calculator.drink.impl.DTO;
 
+import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
+
+import java.util.List;
+
 public record DrinkKindDTO(
-        long id,
+        Long id,
         String kind,
-        boolean isAlcoholic) {
+        boolean isAlcoholic,
+        List<DrinkEntity> allDrinksOfKind) {
 }
