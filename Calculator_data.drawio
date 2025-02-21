@@ -16,19 +16,19 @@
             <mxPoint x="929.3599999999999" y="450" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kacab2gBbmHN1udk01rF-114" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; text-decoration: underline;&quot;&gt;&lt;strong&gt;drinks&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;name&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;price&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;kind&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#003366;shadow=1;fillColor=#D4E1F5;fontColor=#003366" vertex="1" parent="1">
+        <mxCell id="kacab2gBbmHN1udk01rF-114" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; text-decoration: underline;&quot;&gt;&lt;strong&gt;drinks&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;name&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;price&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;kind_id&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#003366;shadow=1;fillColor=#D4E1F5;fontColor=#003366" parent="1" vertex="1">
           <mxGeometry x="860" y="820" width="160" height="198.04" as="geometry" />
         </mxCell>
-        <mxCell id="kacab2gBbmHN1udk01rF-115" value="" style="endArrow=ERmany;endSize=12;startArrow=ERmandOne;startSize=12;startFill=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=0;rounded=0;exitDx=0;exitDy=0;endFill=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="kacab2gBbmHN1udk01rF-114" target="22">
+        <mxCell id="kacab2gBbmHN1udk01rF-115" value="" style="endArrow=ERmany;endSize=12;startArrow=ERmandOne;startSize=12;startFill=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=0;rounded=0;exitDx=0;exitDy=0;endFill=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="kacab2gBbmHN1udk01rF-114" target="22" edge="1">
           <mxGeometry x="769.3599999999999" y="450" as="geometry">
             <mxPoint x="761" y="641" as="sourcePoint" />
             <mxPoint x="870" y="641" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kacab2gBbmHN1udk01rF-116" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; text-decoration: underline;&quot;&gt;&lt;strong&gt;drink_kinds&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;kind&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;isAlcoholic&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#003366;shadow=1;fillColor=#D4E1F5;fontColor=#003366" vertex="1" parent="1">
+        <mxCell id="kacab2gBbmHN1udk01rF-116" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; text-decoration: underline;&quot;&gt;&lt;strong&gt;drink_kinds&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;kind&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-left: 8px;&quot;&gt;isAlcoholic&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#003366;shadow=1;fillColor=#D4E1F5;fontColor=#003366" parent="1" vertex="1">
           <mxGeometry x="1110" y="820" width="160" height="198.04" as="geometry" />
         </mxCell>
-        <mxCell id="kacab2gBbmHN1udk01rF-117" value="" style="endArrow=ERmandOne;endSize=12;startArrow=ERmandOne;startSize=12;startFill=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;rounded=0;exitDx=0;exitDy=0;endFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="kacab2gBbmHN1udk01rF-114" target="kacab2gBbmHN1udk01rF-116">
+        <mxCell id="kacab2gBbmHN1udk01rF-117" value="" style="endArrow=ERmandOne;endSize=12;startArrow=ERmany;startSize=12;startFill=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;rounded=0;exitDx=0;exitDy=0;endFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="kacab2gBbmHN1udk01rF-114" target="kacab2gBbmHN1udk01rF-116" edge="1">
           <mxGeometry x="769.3599999999999" y="450" as="geometry">
             <mxPoint x="950" y="830" as="sourcePoint" />
             <mxPoint x="950" y="740" as="targetPoint" />
