@@ -1,8 +1,8 @@
 package com.waldheim.calculator.person.impl.db.impl;
 
 import com.waldheim.calculator.common.mapper.CalculatorMapper;
+import com.waldheim.calculator.drink.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
-import com.waldheim.calculator.person.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.person.impl.DTO.PersonDTO;
 import com.waldheim.calculator.person.impl.db.PersonDatabaseService;
 import com.waldheim.calculator.person.impl.db.entity.PersonDrinkEntity;

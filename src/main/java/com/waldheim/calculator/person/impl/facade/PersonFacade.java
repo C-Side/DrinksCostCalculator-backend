@@ -1,7 +1,7 @@
 package com.waldheim.calculator.person.impl.facade;
 
+import com.waldheim.calculator.drink.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.person.api.PersonService;
-import com.waldheim.calculator.person.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.person.impl.DTO.PersonDTO;
 import com.waldheim.calculator.person.impl.db.PersonDatabaseService;
 import org.apache.coyote.BadRequestException;

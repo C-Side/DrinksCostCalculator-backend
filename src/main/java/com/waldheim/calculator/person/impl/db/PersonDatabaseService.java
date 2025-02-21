@@ -1,6 +1,6 @@
 package com.waldheim.calculator.person.impl.db;
 
-import com.waldheim.calculator.person.impl.DTO.DrinkAddedDTO;
+import com.waldheim.calculator.drink.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.person.impl.DTO.PersonDTO;
 import org.apache.coyote.BadRequestException;
 

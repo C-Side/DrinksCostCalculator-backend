@@ -1,7 +1,7 @@
 package com.waldheim.calculator.rest.person;
 
+import com.waldheim.calculator.drink.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.person.api.PersonService;
-import com.waldheim.calculator.person.impl.DTO.DrinkAddedDTO;
 import com.waldheim.calculator.person.impl.DTO.PersonDTO;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
