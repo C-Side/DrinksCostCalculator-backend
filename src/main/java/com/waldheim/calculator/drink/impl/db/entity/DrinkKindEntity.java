@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "drink_kinds")
 public class DrinkKindEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,7 +15,7 @@ public class DrinkKindEntity {
     private boolean isAlcoholic;
 
     @OneToMany(mappedBy = "drinkKind", cascade = CascadeType.ALL)
-    private List<DrinkEntity> drinks;
+    private List<DrinkEntity> allDrinksOfKind;
 
     public DrinkKindEntity() {
     }
@@ -43,11 +44,11 @@ public class DrinkKindEntity {
         isAlcoholic = alcoholic;
     }
 
-    public List<DrinkEntity> getDrinks() {
-        return drinks;
+    public List<DrinkEntity> getAllDrinksOfKind() {
+        return allDrinksOfKind;
     }
 
-    public void setDrinks(List<DrinkEntity> drinks) {
-        this.drinks = drinks;
+    public void setAllDrinksOfKind(List<DrinkEntity> drinks) {
+        this.allDrinksOfKind = drinks;
     }
 }

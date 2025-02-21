@@ -32,16 +32,6 @@ public class PersonController {
         return personService.createPerson(personDTO);
     }
 
-    @PostMapping("/{id}/drinks")
-    public void addDrinkToPerson(@PathVariable("id") Long id, @RequestBody DrinkAddedDTO drinkAddedDTO) {
-        personService.addConsumedDrinkByPerson(id, drinkAddedDTO);
-    }
-
-    @GetMapping("/{id}/total")
-    public BigDecimal getTotalCost(@PathVariable("id") Long id) {
-        return personService.calculateTotalCostByPerson(id);
-    }
-
     @PutMapping
     public PersonDTO updatePerson(@RequestBody PersonDTO personDTO) {
         return personService.updatePerson(personDTO);
@@ -51,5 +41,15 @@ public class PersonController {
     public ResponseEntity<Void> deletePerson(@RequestBody PersonDTO personDTO) {
         personService.deletePerson(personDTO);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/drinks")
+    public void addDrinkToPerson(@PathVariable("id") Long id, @RequestBody DrinkAddedDTO drinkAddedDTO) {
+        personService.addConsumedDrinkByPerson(id, drinkAddedDTO);
+    }
+
+    @GetMapping("/{id}/total")
+    public BigDecimal getTotalCost(@PathVariable("id") Long id) {
+        return personService.calculateTotalCostByPerson(id);
     }
 }

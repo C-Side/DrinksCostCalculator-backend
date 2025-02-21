@@ -33,6 +33,16 @@ public class PersonFacade implements PersonService {
     }
 
     @Override
+    public PersonDTO updatePerson(PersonDTO personDTO) {
+        return personDatabaseService.updatePerson(personDTO);
+    }
+
+    @Override
+    public void deletePerson(PersonDTO personDTO) {
+        personDatabaseService.deletePerson(personDTO);
+    }
+
+    @Override
     public void addConsumedDrinkByPerson(Long personId, DrinkAddedDTO drinkAddedDTO) {
         personDatabaseService.addConsumedDrinkByPerson(personId, drinkAddedDTO);
     }
@@ -41,15 +51,5 @@ public class PersonFacade implements PersonService {
     public BigDecimal calculateTotalCostByPerson(Long personId) {
         BigDecimal totalCost = personDatabaseService.getTotalCost(personId);
         return totalCost == null ? BigDecimal.ZERO : totalCost.setScale(2, RoundingMode.CEILING);
-    }
-
-    @Override
-    public PersonDTO updatePerson(PersonDTO personDTO) {
-        return personDatabaseService.updatePerson(personDTO);
-    }
-
-    @Override
-    public void deletePerson(PersonDTO personDTO) {
-        personDatabaseService.deletePerson(personDTO);
     }
 }

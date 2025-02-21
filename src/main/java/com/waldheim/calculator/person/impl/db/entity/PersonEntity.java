@@ -15,7 +15,7 @@ public class PersonEntity {
     private int age;
     private String role;
 
-    @OneToMany(mappedBy = "person_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<PersonDrinkEntity> drinksConsumedByPerson;
 
     public PersonEntity() {

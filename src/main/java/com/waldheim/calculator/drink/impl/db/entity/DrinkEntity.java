@@ -1,9 +1,6 @@
 package com.waldheim.calculator.drink.impl.db.entity;
 
-import com.waldheim.calculator.person.impl.db.entity.PersonDrinkEntity;
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Table(name = "drinks")
@@ -16,11 +13,8 @@ public class DrinkEntity {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "kind_id", nullable = false)
+    @JoinColumn(name = "drink_kinds_id", nullable = false)
     private DrinkKindEntity drinkKind;
-
-    @OneToMany(mappedBy = "drink_id", cascade = CascadeType.ALL)
-    private List<PersonDrinkEntity> personDrinks;
 
     public DrinkEntity() {
     }
@@ -56,13 +50,5 @@ public class DrinkEntity {
 
     public void setDrinkKind(DrinkKindEntity drinkKind) {
         this.drinkKind = drinkKind;
-    }
-
-    public List<PersonDrinkEntity> getPersonDrinks() {
-        return personDrinks;
-    }
-
-    public void setPersonDrinks(List<PersonDrinkEntity> personDrinks) {
-        this.personDrinks = personDrinks;
     }
 }

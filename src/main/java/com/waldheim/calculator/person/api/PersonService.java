@@ -12,11 +12,11 @@ public interface PersonService {
 
     PersonDTO createPerson(PersonDTO personDTO) throws BadRequestException;
 
-    void addConsumedDrinkByPerson(Long personId, DrinkAddedDTO drinkAddedDTO);
-
-    BigDecimal calculateTotalCostByPerson(Long personId);
-
     PersonDTO updatePerson(PersonDTO personDTO);
 
     void deletePerson(PersonDTO personDTO);
+
+    void addConsumedDrinkByPerson(Long personId, DrinkAddedDTO drinkAddedDTO);
+
+    BigDecimal calculateTotalCostByPerson(Long personId);
 }
