@@ -1,12 +1,12 @@
 package com.waldheim.calculator.drink.impl.db.impl;
 
 import com.waldheim.calculator.common.mapper.CalculatorMapper;
+import com.waldheim.calculator.drink.impl.DTO.DrinkCategoryDTO;
 import com.waldheim.calculator.drink.impl.DTO.DrinkDTO;
-import com.waldheim.calculator.drink.impl.DTO.DrinkKindDTO;
 import com.waldheim.calculator.drink.impl.db.DrinkDatabaseService;
+import com.waldheim.calculator.drink.impl.db.entity.DrinkCategoryEntity;
 import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
-import com.waldheim.calculator.drink.impl.db.entity.DrinkKindEntity;
-import com.waldheim.calculator.drink.impl.db.repository.DrinkKindsRepository;
+import com.waldheim.calculator.drink.impl.db.repository.DrinkCategoriesRepository;
 import com.waldheim.calculator.drink.impl.db.repository.DrinkRepository;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +22,13 @@ import java.util.stream.Collectors;
 public class DrinkDatabaseFacade implements DrinkDatabaseService {
 
     private final DrinkRepository drinkRepository;
-    private final DrinkKindsRepository drinkKindsRepository;
+    private final DrinkCategoriesRepository drinkCategoriesRepository;
     private final CalculatorMapper calculatorMapper;
 
     @Autowired
-    public DrinkDatabaseFacade(DrinkRepository drinkRepository, DrinkKindsRepository drinkKindsRepository, CalculatorMapper calculatorMapper) {
+    public DrinkDatabaseFacade(DrinkRepository drinkRepository, DrinkCategoriesRepository drinkCategoriesRepository, CalculatorMapper calculatorMapper) {
         this.drinkRepository = drinkRepository;
-        this.drinkKindsRepository = drinkKindsRepository;
+        this.drinkCategoriesRepository = drinkCategoriesRepository;
         this.calculatorMapper = calculatorMapper;
     }
 
@@ -64,27 +64,27 @@ public class DrinkDatabaseFacade implements DrinkDatabaseService {
     }
 
     @Override
-    public List<DrinkKindDTO> getAllDrinkKinds() {
-        return drinkKindsRepository.findAll().stream().map(calculatorMapper::drinkKindEntityDTOToDrinkKindDTO).collect(Collectors.toList());
+    public List<DrinkCategoryDTO> getAllDrinkCategories() {
+        return drinkCategoriesRepository.findAll().stream().map(calculatorMapper::drinkCategoryEntityToDrinkCategoryDTO).collect(Collectors.toList());
     }
 
     @Override
-    public DrinkKindDTO createDrinkKind(DrinkKindDTO drinkKindDTO) throws BadRequestException {
-        if (drinkKindDTO.id() != null) {
-            throw new BadRequestException("A new drink kind cannot already have an ID");
+    public DrinkCategoryDTO createDrinkCategory(DrinkCategoryDTO drinkCategoryDTO) throws BadRequestException {
+        if (drinkCategoryDTO.id() != null) {
+            throw new BadRequestException("A new drink category cannot already have an ID");
         }
-        DrinkKindEntity drinkKindEntity = drinkKindsRepository.save(calculatorMapper.drinkKindDTOToDrinkKindEntity(drinkKindDTO));
-        return calculatorMapper.drinkKindEntityDTOToDrinkKindDTO(drinkKindEntity);
+        DrinkCategoryEntity drinkCategoryEntity = drinkCategoriesRepository.save(calculatorMapper.drinkCategoryDTOToDrinkCategoryEntity(drinkCategoryDTO));
+        return calculatorMapper.drinkCategoryEntityToDrinkCategoryDTO(drinkCategoryEntity);
     }
 
     @Override
-    public DrinkKindDTO updateDrinkKind(DrinkKindDTO drinkKindDTO) {
-        DrinkKindEntity drinkKindEntity = drinkKindsRepository.save(calculatorMapper.drinkKindDTOToDrinkKindEntity(drinkKindDTO));
-        return calculatorMapper.drinkKindEntityDTOToDrinkKindDTO(drinkKindEntity);
+    public DrinkCategoryDTO updateDrinkCategory(DrinkCategoryDTO drinkCategoryDTO) {
+        DrinkCategoryEntity drinkCategoryEntity = drinkCategoriesRepository.save(calculatorMapper.drinkCategoryDTOToDrinkCategoryEntity(drinkCategoryDTO));
+        return calculatorMapper.drinkCategoryEntityToDrinkCategoryDTO(drinkCategoryEntity);
     }
 
     @Override
-    public void deleteDrinkKind(DrinkKindDTO drinkKindDTO) {
-        drinkKindsRepository.delete(calculatorMapper.drinkKindDTOToDrinkKindEntity(drinkKindDTO));
+    public void deleteDrinkCategory(DrinkCategoryDTO drinkCategoryDTO) {
+        drinkCategoriesRepository.delete(calculatorMapper.drinkCategoryDTOToDrinkCategoryEntity(drinkCategoryDTO));
     }
 }

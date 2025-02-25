@@ -4,9 +4,9 @@ import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
 
 import java.util.List;
 
-public record DrinkKindDTO(
+public record DrinkCategoryDTO(
         Long id,
-        String kind,
-        boolean isAlcoholic,
+        String category,
+        boolean alcoholic,
         List<DrinkEntity> allDrinksOfKind) {
 }

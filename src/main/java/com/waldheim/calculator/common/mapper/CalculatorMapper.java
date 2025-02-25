@@ -1,9 +1,9 @@
 package com.waldheim.calculator.common.mapper;
 
+import com.waldheim.calculator.drink.impl.DTO.DrinkCategoryDTO;
 import com.waldheim.calculator.drink.impl.DTO.DrinkDTO;
-import com.waldheim.calculator.drink.impl.DTO.DrinkKindDTO;
+import com.waldheim.calculator.drink.impl.db.entity.DrinkCategoryEntity;
 import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
-import com.waldheim.calculator.drink.impl.db.entity.DrinkKindEntity;
 import com.waldheim.calculator.person.impl.DTO.PersonDTO;
 import com.waldheim.calculator.person.impl.db.entity.PersonEntity;
 import org.mapstruct.Mapper;
@@ -19,7 +19,7 @@ public interface CalculatorMapper {
 
     DrinkEntity drinkDTOToDrinkEntity(DrinkDTO drinkDTO);
 
-    DrinkKindEntity drinkKindDTOToDrinkKindEntity(DrinkKindDTO drinkKindDTO);
+    DrinkCategoryEntity drinkCategoryDTOToDrinkCategoryEntity(DrinkCategoryDTO drinkCategoryDTO);
 
-    DrinkKindDTO drinkKindEntityDTOToDrinkKindDTO(DrinkKindEntity drinkKindEntity);
+    DrinkCategoryDTO drinkCategoryEntityToDrinkCategoryDTO(DrinkCategoryEntity drinkCategoryEntity);
 }

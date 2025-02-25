@@ -5,19 +5,19 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "drink_kinds")
-public class DrinkKindEntity {
+@Table(name = "drink_categories")
+public class DrinkCategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String kind;
-    private boolean isAlcoholic;
+    private String category;
+    private boolean alcoholic;
 
     @OneToMany(mappedBy = "drinkKind", cascade = CascadeType.ALL)
     private List<DrinkEntity> allDrinksOfKind;
 
-    public DrinkKindEntity() {
+    public DrinkCategoryEntity() {
     }
 
     public Long getId() {
@@ -28,20 +28,20 @@ public class DrinkKindEntity {
         this.id = id;
     }
 
-    public String getKind() {
-        return kind;
+    public String getCategory() {
+        return category;
     }
 
-    public void setKind(String kind) {
-        this.kind = kind;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public boolean isAlcoholic() {
-        return isAlcoholic;
+        return alcoholic;
     }
 
-    public void setAlcoholic(boolean alcoholic) {
-        isAlcoholic = alcoholic;
+    public void setAlcoholic(boolean isAlcoholic) {
+        this.alcoholic = isAlcoholic;
     }
 
     public List<DrinkEntity> getAllDrinksOfKind() {

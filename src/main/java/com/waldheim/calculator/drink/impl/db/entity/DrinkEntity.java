@@ -14,7 +14,7 @@ public class DrinkEntity {
 
     @ManyToOne
     @JoinColumn(name = "drink_kinds_id", nullable = false)
-    private DrinkKindEntity drinkKind;
+    private DrinkCategoryEntity drinkKind;
 
     public DrinkEntity() {
     }
@@ -44,11 +44,11 @@ public class DrinkEntity {
         this.price = price;
     }
 
-    public DrinkKindEntity getDrinkKind() {
+    public DrinkCategoryEntity getDrinkKind() {
         return drinkKind;
     }
 
-    public void setDrinkKind(DrinkKindEntity drinkKind) {
+    public void setDrinkKind(DrinkCategoryEntity drinkKind) {
         this.drinkKind = drinkKind;
     }
 }
