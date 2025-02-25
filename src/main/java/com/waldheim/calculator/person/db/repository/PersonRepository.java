@@ -1,6 +1,6 @@
-package com.waldheim.calculator.person.impl.db.repository;
+package com.waldheim.calculator.person.db.repository;
 
-import com.waldheim.calculator.person.impl.db.entity.PersonEntity;
+import com.waldheim.calculator.person.db.entity.PersonEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

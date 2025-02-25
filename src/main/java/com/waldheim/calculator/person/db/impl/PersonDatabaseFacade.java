@@ -1,9 +1,9 @@
-package com.waldheim.calculator.person.impl.db.impl;
+package com.waldheim.calculator.person.db.impl;
 
-import com.waldheim.calculator.person.impl.db.PersonDatabaseService;
-import com.waldheim.calculator.person.impl.db.entity.PersonEntity;
-import com.waldheim.calculator.person.impl.db.repository.PersonDrinkRepository;
-import com.waldheim.calculator.person.impl.db.repository.PersonRepository;
+import com.waldheim.calculator.person.db.PersonDatabaseService;
+import com.waldheim.calculator.person.db.entity.PersonEntity;
+import com.waldheim.calculator.person.db.repository.PersonDrinkRepository;
+import com.waldheim.calculator.person.db.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

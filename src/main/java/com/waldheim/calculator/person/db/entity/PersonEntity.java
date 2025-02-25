@@ -1,4 +1,4 @@
-package com.waldheim.calculator.person.impl.db.entity;
+package com.waldheim.calculator.person.db.entity;
 
 import jakarta.persistence.*;
 

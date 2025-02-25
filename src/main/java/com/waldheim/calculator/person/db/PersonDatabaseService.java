@@ -1,4 +1,4 @@
-package com.waldheim.calculator.person.impl.db;
+package com.waldheim.calculator.person.db;
 
 
 import java.math.BigDecimal;

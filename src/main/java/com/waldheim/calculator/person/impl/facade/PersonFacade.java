@@ -1,7 +1,7 @@
 package com.waldheim.calculator.person.impl.facade;
 
 import com.waldheim.calculator.person.api.PersonService;
-import com.waldheim.calculator.person.impl.db.PersonDatabaseService;
+import com.waldheim.calculator.person.db.PersonDatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

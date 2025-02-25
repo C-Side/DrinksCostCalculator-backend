@@ -1,5 +1,6 @@
 package com.waldheim.calculator.configuration;
 
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -15,6 +16,12 @@ public class WebConfiguration implements WebMvcConfigurer, RepositoryRestConfigu
     @Value("${cors.allowed-origin}")
     private String allowedOrigin;
 
+    private final EntityManager entityManager;
+
+    public WebConfiguration(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -29,5 +36,7 @@ public class WebConfiguration implements WebMvcConfigurer, RepositoryRestConfigu
                 .allowedOrigins(allowedOrigin)
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*");
+
+        entityManager.getMetamodel().getEntities().forEach(entityType -> config.exposeIdsFor(entityType.getJavaType()));
     }
 }

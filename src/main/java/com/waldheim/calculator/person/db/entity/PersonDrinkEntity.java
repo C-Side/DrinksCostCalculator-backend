@@ -1,6 +1,6 @@
-package com.waldheim.calculator.person.impl.db.entity;
+package com.waldheim.calculator.person.db.entity;
 
-import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
+import com.waldheim.calculator.drink.db.entity.DrinkEntity;
 import jakarta.persistence.*;
 
 @Entity

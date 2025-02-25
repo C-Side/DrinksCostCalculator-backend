@@ -1,8 +1,6 @@
-package com.waldheim.calculator.person.impl.db.repository;
+package com.waldheim.calculator.person.db.repository;
 
-import com.waldheim.calculator.drink.impl.db.entity.DrinkEntity;
-import com.waldheim.calculator.person.impl.db.entity.PersonDrinkEntity;
-import com.waldheim.calculator.person.impl.db.entity.PersonEntity;
+import com.waldheim.calculator.person.db.entity.PersonDrinkEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,7 +10,6 @@ import java.math.BigDecimal;
 
 @RepositoryRestResource(collectionResourceRel = "person-drinks", path = "person-drinks")
 public interface PersonDrinkRepository extends JpaRepository<PersonDrinkEntity, Long> {
-    PersonDrinkEntity findByPersonAndDrink(PersonEntity person, DrinkEntity drink);
 
     @Query(value = "SELECT SUM(drinks.price * person_drinks.quantity) AS total_cost" +
             " FROM person_drinks" +

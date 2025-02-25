@@ -1,4 +1,4 @@
-package com.waldheim.calculator.drink.impl.db.entity;
+package com.waldheim.calculator.drink.db.entity;
 
 import jakarta.persistence.*;
 
@@ -14,7 +14,7 @@ public class DrinkCategoryEntity {
     private String category;
     private boolean alcoholic;
 
-    @OneToMany(mappedBy = "drinkCategory", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "drinkCategory")
     private List<DrinkEntity> allDrinksOfCategory;
 
     public DrinkCategoryEntity() {
