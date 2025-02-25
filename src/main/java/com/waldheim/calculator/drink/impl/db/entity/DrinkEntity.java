@@ -13,8 +13,8 @@ public class DrinkEntity {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "drink_kinds_id", nullable = false)
-    private DrinkCategoryEntity drinkKind;
+    @JoinColumn(name = "drink_categories_id", nullable = false)
+    private DrinkCategoryEntity drinkCategory;
 
     public DrinkEntity() {
     }
@@ -44,11 +44,11 @@ public class DrinkEntity {
         this.price = price;
     }
 
-    public DrinkCategoryEntity getDrinkKind() {
-        return drinkKind;
+    public DrinkCategoryEntity getDrinkCategory() {
+        return drinkCategory;
     }
 
-    public void setDrinkKind(DrinkCategoryEntity drinkKind) {
-        this.drinkKind = drinkKind;
+    public void setDrinkCategory(DrinkCategoryEntity drinkCategory) {
+        this.drinkCategory = drinkCategory;
     }
 }

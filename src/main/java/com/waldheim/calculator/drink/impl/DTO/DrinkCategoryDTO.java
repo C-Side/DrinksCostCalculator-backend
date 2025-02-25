@@ -8,5 +8,5 @@ public record DrinkCategoryDTO(
         Long id,
         String category,
         boolean alcoholic,
-        List<DrinkEntity> allDrinksOfKind) {
+        List<DrinkEntity> allDrinksOfCategory) {
 }

@@ -4,5 +4,5 @@ public record DrinkDTO(
         Long id,
         String name,
         double price,
-        DrinkCategoryDTO drinkKind) {
+        DrinkCategoryDTO drinkCategoryDTO) {
 }

@@ -14,8 +14,8 @@ public class DrinkCategoryEntity {
     private String category;
     private boolean alcoholic;
 
-    @OneToMany(mappedBy = "drinkKind", cascade = CascadeType.ALL)
-    private List<DrinkEntity> allDrinksOfKind;
+    @OneToMany(mappedBy = "drinkCategory", cascade = CascadeType.ALL)
+    private List<DrinkEntity> allDrinksOfCategory;
 
     public DrinkCategoryEntity() {
     }
@@ -44,11 +44,11 @@ public class DrinkCategoryEntity {
         this.alcoholic = isAlcoholic;
     }
 
-    public List<DrinkEntity> getAllDrinksOfKind() {
-        return allDrinksOfKind;
+    public List<DrinkEntity> getAllDrinksOfCategory() {
+        return allDrinksOfCategory;
     }
 
-    public void setAllDrinksOfKind(List<DrinkEntity> drinks) {
-        this.allDrinksOfKind = drinks;
+    public void setAllDrinksOfCategory(List<DrinkEntity> drinks) {
+        this.allDrinksOfCategory = drinks;
     }
 }
